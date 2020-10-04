@@ -25,7 +25,7 @@
 	<div class="jumbotron">
 		<h1>회원가입</h1>
 	</div>
-	<form method="post" action="<%=request.getContextPath() %>/signupAction.jsp">
+	<form method="post" action="<%=request.getContextPath() %>/login/signupAction.jsp">
 	<div>
 		<table>
 			<tr>

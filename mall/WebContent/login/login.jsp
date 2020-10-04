@@ -23,11 +23,11 @@
 			<table class="table table-bordered">
 				<tr>
 					<td>사용자 ID</td>
-					<td><input class="form-control" type="text" name="memberEmail" required></td>
+					<td><input class="form-control" type="text" name="memberEmail" value="aa" required></td>
 				</tr>
 				<tr>
 					<td>사용자 PW</td>
-					<td><input class="form-control" type="text" name="memberPw" required></td>
+					<td><input class="form-control" type="text" name="memberPw" value="1234" required></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-primary"><img src="/mall-admin/img/key.jpg" width="40" height="22" alt="">로그인</button>

@@ -20,6 +20,6 @@
 		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 	}else{
 		session.setAttribute("loginMemberEmail", loginMemberEmail);
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
+		response.sendRedirect(request.getContextPath()+"/index/index.jsp");
 	}
 %>

@@ -21,6 +21,7 @@
 	request.setCharacterEncoding("utf-8");
 	
 	CategoryDao categoryDao = new CategoryDao();
+	ProductDao productDao = new ProductDao();
 	
 	ArrayList<Category> categoryList1 = categoryDao.selectCategoryList();	//	전체 카테고리 리스트
 	ArrayList<Category> categoryList2 = categoryDao.selectCategoryCkList();	//	추천 카테고리 리스트
@@ -30,16 +31,9 @@
 	<div class="container">
 		<div>	<!-- 홈페이지 이름 / 검색바 -->
 			<div class="row">
-				<div class="col-sm-4 text-left" style="font-size:50px">Goodee Shop</div>
-				<div class="col-sm-4 text-center">
-					<form action="">
-						<input type="text">
-						<button type="submit">검색</button>
-					</form>
-				</div>
-				<div class="col-sm-4 text-right">
-					<a href="<%=request.getContextPath()%>/orders/myOrdersList.jsp" class="fas fa-user-alt" style="font-size:48px;color:black"></a>
-					<i class="fas fa-shopping-cart" style="font-size:48px;color:black"></i>
+				<div class="col-sm-6 text-left" style="font-size:50px"><a href="<%=request.getContextPath()%>/index/index.jsp">Goodee Shop</a></div>
+				<div class="col-sm-6 text-right">
+					<a href="<%=request.getContextPath()%>/orders/myOrdersList.jsp" class="fas fa-shopping-cart" style="font-size:48px;color:black"></a>
 				</div>
 			</div>
 		</div>
@@ -51,7 +45,6 @@
 			    <a class="btn btn-danger" role="button" href="<%=request.getContextPath()%>/login/logoutAction.jsp">로그아웃</a></div>
 			    
 			</ul>
-		
 		</div>
 		<div>
 			<div class="row">
@@ -63,7 +56,7 @@
  						for(Category c : categoryList1){
  					%>
  					
- 							<a href="" class="btn btn-primary"><%=c.getCategoryName() %></a>
+ 							<a href="<%=request.getContextPath()%>/product/productList.jsp?categoryId=<%=c.getCategoryId() %>" class="btn btn-primary"><%=c.getCategoryName() %></a>
  							
  					<%
  						}
@@ -79,16 +72,16 @@
 		
 		<br>
 		
-		<!-- 추천 카테고리 이미지 링크 -->
+		<!-- 추천 카테고리 이미지  -->
 		<div class="row">
 			
 			<%
 				for(Category c : categoryList2){
 			%>
 			<div class="col-sm-3">
-					<a href="">
+					
 						<img src="<%=request.getContextPath()%>/img/category.png" class="rounded-circle" width="200" height="200">
-					</a>
+					
 			</div>
 			<%
 				}
@@ -108,22 +101,34 @@
 		</div>
 		<br>
 		
+		
+		<%
+			int categoryId = -1;
+			if(request.getParameter("categoryId") != null){
+				categoryId = Integer.parseInt(request.getParameter("categoryId"));
+			}
+			
+			ArrayList<Product> productList = null;
+			if(categoryId == -1){
+				productList = productDao.selectProductList();
+			}else{
+				productList = productDao.selectProductListByCategoryId(categoryId);
+			}
+			
+		%>
+		
 		<div class="row">
 			<%
  				for(Category c : categoryList1){
  			%>
  			<div class="col-sm-2">
- 					<a href="" class="btn btn-secondary btn-group-vertical"><%=c.getCategoryName() %></a>
+ 					<a href="<%=request.getContextPath()%>/index/index.jsp?categoryId=<%=c.getCategoryId() %>" class="btn btn-secondary nav-link"><%=c.getCategoryName() %></a>
  			</div>
  			<%
  				}
  			%>
 		</div>
-		
-		<%
-			ProductDao productDao = new ProductDao();
-			ArrayList<Product> productList = productDao.selectProductList();
-		%>
+
 		<!-- 상품 목록6개 -->
 		<table>
 			<tr>

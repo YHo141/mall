@@ -3,10 +3,12 @@ import java.util.ArrayList;
 
 import commons.DBUtil;
 import vo.Category;
+import vo.Product;
+
 import java.sql.*;
 
 public class CategoryDao {
-	//	Ä«Å×°í¸®ÀÇ ¸ñ·Ï
+	//	Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public ArrayList<Category> selectCategoryList() throws Exception{
 		ArrayList<Category> list = new ArrayList<Category>();
 		DBUtil dbUtil = new DBUtil();
@@ -25,7 +27,7 @@ public class CategoryDao {
 		return list;
 	}
 	
-	//	ÃßÃµ Ä«Å×°í¸®ÀÇ ¸ñ·Ï
+	//	ï¿½ï¿½Ãµ Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public ArrayList<Category> selectCategoryCkList() throws Exception{
 		ArrayList<Category> list = new ArrayList<Category>();
 		DBUtil dbUtil = new DBUtil();
