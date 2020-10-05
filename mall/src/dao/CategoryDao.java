@@ -13,7 +13,7 @@ public class CategoryDao {
 		ArrayList<Category> list = new ArrayList<Category>();
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConection();
-		String sql = "select category_id, category_name from category";
+		String sql = "select category_id, category_name, category_pic from category";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 		
@@ -21,6 +21,7 @@ public class CategoryDao {
 			Category category = new Category();
 			category.setCategoryId(rs.getInt("category_id"));
 			category.setCategoryName(rs.getString("category_name"));
+			category.setCategoryPic(rs.getString("category_pic"));
 			list.add(category);
 		}
 		conn.close();
