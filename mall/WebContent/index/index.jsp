@@ -140,7 +140,7 @@
 					<td>
 					<div class="row">
 						<div class="card col-sm-12">
-						  <img class="card-img-top" src="<%=request.getContextPath()%>/img/default.jpg" alt="Card image">
+						  <img class="card-img-top" src="<%=request.getContextPath()%>/img/default.jpg" alt="Card image" width="300" height="300">
 						  <div class="card-body">
 						    <a href="<%=request.getContextPath()%>/product/productOne.jsp?productId=<%=p.getProductId() %>&productPic=<%=p.getProductPic() %>&productName=<%=p.getProductName() %>&productContent=<%=p.getProductContent() %>"><%=p.getProductName() %></a>
 						    <p class="card-text col-sm-12"><%=p.getProductPrice() %></p>

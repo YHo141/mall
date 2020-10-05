@@ -2,6 +2,13 @@
 <%@ page import="java.util.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
+<%
+	if(session.getAttribute("loginMemberEmail") == null){
+		System.out.println("로그아웃중 입니다.");
+		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +19,10 @@
 </head>
 <body>
 	<%
+		request.setCharacterEncoding("utf-8");
+	
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		
 		ProductDao productDao = new ProductDao();
 		ArrayList<Product> productList = null;
 		if(categoryId == -1){
@@ -64,7 +74,7 @@
 					if(p.getProductSoldout().equals("Y")){
 			%>
 					<tr class="text-danger">
-					<td><del><%=p.getProductId() %></del></td>
+					<td><a href="" class="btn btn-danger"><%=p.getProductId() %></a></td>
 					<td><del><%=p.getCategoryId() %></del></td>
 					<td><del><%=p.getProductName() %></del></td>
 					<td><del><%=p.getProductPrice() %></del></td>
@@ -87,7 +97,7 @@
 		</tbody>
 	</table>
 	<a href="<%=request.getContextPath()%>/index/index.jsp" class="btn btn-secondary">뒤로가기</a>
-	</div>
-	</div>
+</div>
+
 </body>
 </html>

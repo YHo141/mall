@@ -81,7 +81,7 @@ if(session.getAttribute("loginMemberEmail") == null){
 				</tr>
 				<tr>
 					<td>product_pic</td>
-					<td><img src="<%=request.getContextPath() %>/img/<%=product.getProductPic() %>"></td>
+					<td><img src="<%=request.getContextPath() %>/img/<%=product.getProductPic() %>" width="500" height="500"></td>
 				</tr>
 				<tr>
 					<td>product_name</td>
@@ -100,9 +100,8 @@ if(session.getAttribute("loginMemberEmail") == null){
 					<td><%=product.getProductSoldout() %></td>
 				</tr>
 			</table>
-			<a href="<%=request.getContextPath()%>/index/index.jsp" class="btn btn-secondary">메인으로</a>
 		</div>
-		
+		<a href="<%=request.getContextPath()%>/index/index.jsp" class="btn btn-secondary">메인으로</a>
 	</div>
 </body>
 </html>

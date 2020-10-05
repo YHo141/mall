@@ -62,19 +62,6 @@
 		<div class="jumbotron">
 			<h1>주문내역</h1>
 		</div>
-		<form method="post" action="<%=request.getContextPath()%>/orders/myOrdersList.jsp">
-			<select name="memberEmail">
-				<option value="">선택</option>
-				<%
-					for(String o : ordersEmailList){
-				%>
-						<option value=<%=o %>><%=o %></option>
-				<%
-					}
-				%>
-			</select>
-			<button type="submit">검색</button>
-		</form>
 		<table class="table table-info table-striped">
 		<tr>
 			<td>orders_id</td>
@@ -87,6 +74,7 @@
 		</tr>
 		<%
 			for(Orders o : list){
+				if(session.getAttribute("loginMemberEmail").equals(o.getMemberEmail())){
 		%>
 		<tr>	
 				<td><%=o.getOrdersId() %></td>
@@ -99,6 +87,7 @@
 		</tr>
 		<%
 			}
+		}
 		%>
 		</table>
 		<a href="<%=request.getContextPath()%>/index/index.jsp" class="btn btn-secondary">메인으로</a>
